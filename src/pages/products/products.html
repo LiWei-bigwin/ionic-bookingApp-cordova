@@ -1,0 +1,138 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{'Shop'| translate }}
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only class="cart-button" (click)="openCart()">
+        <ion-icon name="cart">
+          <ion-badge color="secondary">{{shared.cartquantity}}</ion-badge>
+        </ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar class="toolbar-secondary" [class.disable]="products[0]==1">
+    <ion-slides slidesPerView="auto" dir="{{shared.dir}}">
+      <ion-slide [class.selected]="selectedTab==''" *ngIf="shared.allCategories!=null" (click)="changeTab('')">
+        {{'All'|translate}}</ion-slide>
+
+      <ion-slide [class.selected]="selectedTab==c.id" *ngFor="let c of shared.allCategories" (click)="changeTab(c)">
+        {{c.name}}
+      </ion-slide>
+    </ion-slides>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="page-products" (ionScroll)="onScroll($event)">
+
+  <ion-grid *ngIf="productView=='grid'">
+    <ion-col *ngFor="let p of products" col-6>
+      <product [data]="p" [type]="'normal'"></product>
+    </ion-col>
+  </ion-grid>
+
+  <ion-list class="list-view" *ngIf="productView=='list'">
+    <span *ngFor="let p of products">
+      <product [data]="p" [type]="'list'"></product>
+    </span>
+  </ion-list>
+  <ion-col *ngIf="products.length==0 && loadingServerData" col-12 class="animated fadeIn">
+    <h6 text-center>{{'No Products Found!'|translate}}</h6>
+  </ion-col>
+
+  <ion-infinite-scroll #infinite (ionInfinite)="getFilterdProducts()">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-fab bottom right *ngIf="scrollTopButton">
+    <button ion-fab (click)="scrollToTop()">
+      <ion-icon name="arrow-round-up"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-buttons left>
+      <small>{{"Sort Products"|translate}}
+      </small>
+
+      <button small ion-button clear color="secondary" (click)="openSortBy()">
+        {{sortOrder| translate}}
+        <ion-icon name="arrow-up"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons right>
+      <button ion-button icon-only (click)="changeLayout()">
+        <ion-icon name="list" [name]="productView=='grid'? 'list' : 'apps'"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="resetFilters()" *ngIf="applyFilter">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <button ion-button icon-only *ngIf="shared.dir=='ltr'" menuToggle="right">
+        <ion-icon name="funnel"></ion-icon>
+      </button>
+      <button ion-button icon-only *ngIf="shared.dir=='rtl'" menuToggle="left">
+        <ion-icon name="funnel"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+
+<ion-menu [content]="content" side="{{side}}" id="menu2">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons left>
+        <button ion-button icon-only *ngIf="shared.dir=='ltr'" menuToggle="right">
+          <ion-icon name="close"></ion-icon>
+        </button>
+        <button ion-button icon-only *ngIf="shared.dir=='rtl'" menuToggle="left">
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>{{"Filters"|translate}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="side-menu">
+    <h3 style="margin-bottom:0;">{{'by'| translate}}&nbsp;{{'Price'| translate}}</h3>
+    <ion-item dir="ltr">
+      <ion-range dualKnobs="true" pin="true" (ionBlur)="applyFilters()" [(ngModel)]="price" [min]="minAmount"
+        [max]="maxAmount">
+        <ion-label range-left>{{price.lower}}</ion-label>
+        <ion-label range-right>{{price.upper}}</ion-label>
+      </ion-range>
+    </ion-item>
+
+    <div *ngIf="on_sale=='True' || featured=='True'">
+      <ion-list>
+        <h3>{{'by'| translate}}&nbsp;{{'SALE'| translate}}/{{'Featured'| translate}}</h3>
+        <ion-item *ngIf="on_sale=='True'">
+          <ion-label>{{'SALE'| translate}}</ion-label>
+          <ion-checkbox [(ngModel)]="filterOnSale" (click)="fillFilterArray($event,'sale')"></ion-checkbox>
+        </ion-item>
+        <ion-item *ngIf="featured=='True'">
+          <ion-label>{{'Featured'| translate}}</ion-label>
+          <ion-checkbox [(ngModel)]="filterFeatured" (click)="fillFilterArray($event,'featured')"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div *ngIf="attributes.length!=0;">
+      <!-- <h3>{{'Filter by attributes'| translate}}</h3> -->
+      <ion-list>
+        <div *ngFor="let a of attributes">
+          <h3 class="capital">{{'by'| translate}}&nbsp;{{a.attribute_name}}</h3>
+          <ion-item *ngFor="let v of a.attribute_terms">
+            <ion-label>{{v.name}}</ion-label>
+            <ion-checkbox [(ngModel)]="v.value" [checked]="checkAttributeSelected(a,v)"
+              (ionChange)="selectAttribute(a,v)"></ion-checkbox>
+          </ion-item>
+        </div>
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-menu>
+<!-- <ion-nav #content></ion-nav> -->

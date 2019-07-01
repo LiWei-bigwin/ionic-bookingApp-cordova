@@ -1,0 +1,10 @@
+<div class="ph-item" *ngIf="!shared.banners" style="padding:0; margin-bottom:0;" class="animation-out">
+    <div class="ph-picture" style="margin-bottom:0; height: 211px;"></div>
+
+</div>
+<ion-slides pager="true" paginationType="bullets" dir="{{shared.dir}}" *ngIf="shared.banners" class="animation-in">
+  <ion-slide *ngFor="let b of shared.banners" (click)="bannerClick(b)">
+    <img src="{{b.banners_image}}">
+  </ion-slide>
+</ion-slides>
+<!-- autoplay="5000" -->

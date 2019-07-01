@@ -1,0 +1,30 @@
+page-my-orders {
+    .pending{
+        background-color: color($colors, dark);
+        color: white;
+    }
+    .cancel{
+        background-color: color($colors, danger);
+        color: white;
+       // color: color($colors, danger);
+    }
+    .complete{
+        background-color: color($colors, secondary);
+        color: white;
+    }
+    .inprocess{
+        background-color: color($colors, primary-dark);
+        color: white;
+    }
+    .page-my-orders{
+        .card{
+            background-color: $white;
+            .card-content{
+                padding: 10px;
+                .col{
+                    
+                }
+            }
+        }
+    }
+}

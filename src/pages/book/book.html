@@ -1,0 +1,41 @@
+<ion-header *ngIf="params.showToolbars">
+  <ion-navbar color="wbprimary">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="backToBookList()">
+        <ion-icon name="md-arrow-back">
+        </ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="openModalBookDetails()">
+        <ion-icon name="md-list-box"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (tap)="settings($event)">
+        <ion-icon name="ios-color-palette"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="bookmarking('middle')">
+        <ion-icon [name]="params.bookmarked ? 'ios-bookmark':'ios-bookmark-outline'"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content id="book" no-bounce center>
+  
+</ion-content>
+
+
+<ion-footer no-lines no-padding *ngIf="params.showToolbars">
+  <ion-toolbar>
+    <ion-spinner *ngIf="params.position==undefined" name="bubbles"></ion-spinner>
+    <div *ngIf="params.position!=undefined" class="filled-progress" (click)="goToLocation()">
+      <span style="color: white;">{{params.position*100 | number:'1.0-2'}}%</span>
+      <div class="progress" [style.width]="(params.position*100)+'%'"></div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

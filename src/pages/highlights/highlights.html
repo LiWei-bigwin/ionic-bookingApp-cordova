@@ -1,0 +1,22 @@
+<ion-header>
+</ion-header>
+<ion-content>
+  <ion-card *ngFor="let highlight of highlights">
+    <ion-card-content  (click)="select(highlight)">
+      <ion-card-title>
+          Position: {{highlight.position*100 | number:'1.0-2'}}%
+      </ion-card-title>
+      <p >
+        {{highlight.text.substring(0,200)}}{{highlight.text.length>200?'...':''}}
+      </p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-start (click)="delete(highlight)">
+          <ion-icon name='ios-trash-outline'></ion-icon>
+          Delete
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>

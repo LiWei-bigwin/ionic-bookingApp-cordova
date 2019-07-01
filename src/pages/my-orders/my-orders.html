@@ -1,0 +1,89 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>
+      {{'My Orders'| translate }}
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="refreshPage()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <button ion-button icon-only class="cart-button" (click)="openCart()">
+        <ion-icon name="cart">
+          <ion-badge color="secondary">{{shared.cartquantity}}</ion-badge>
+        </ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="page-my-orders">
+  <ion-grid class="page-empty" *ngIf="orders.length==0 && httpRunning==false">
+    <ion-row align-items-center>
+      <ion-col col-12>
+        <h3 text-center>
+          <ion-icon name="briefcase"></ion-icon>
+        </h3>
+        <h4 text-center>{{'Your Order List is Empty'|translate}}</h4>
+        <h5 text-center>{{'continue shopping'|translate}}</h5>
+        <p text-center>
+          <button ion-button (click)="openShop()">{{'Explore'|translate}}</button>
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card *ngFor="let order of orders" >
+    <ion-card-content>
+      <div (click)="showOrderDetail(order)">
+      <ion-row>
+        <ion-col col-6>
+          {{'Order ID'|translate}}
+        </ion-col>
+        <ion-col text-right col-6>
+          {{'#'+order.number}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          {{'Date'|translate}}
+        </ion-col>
+        <ion-col text-right col-6>
+          {{order.date_created|date}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          {{'Price'|translate}}
+        </ion-col>
+        <ion-col text-right col-6>
+          {{addCurrecny(order,order.total)}}
+        </ion-col>
+      </ion-row>
+      </div>
+      <ion-row [class.pending]="order.status=='pending' || order.status=='refunded'"
+        [class.cancel]="order.status=='cancelled' || order.status=='failed'"
+        [class.inprocess]="order.status=='processing'" [class.complete]="order.status=='completed'">
+        <ion-col col-6>
+          {{'Status'|translate}}
+        </ion-col>
+        <ion-col text-right col-6>
+          <span>
+            <strong>{{order.status|translate}}</strong>
+          </span>
+          <button ion-button color="purple" *ngIf='order.status=="completed"' slot='end' color='light' (click)='read(book)'>Read Book</button>
+
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <ion-infinite-scroll #infinite (ionInfinite)="getOrders($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

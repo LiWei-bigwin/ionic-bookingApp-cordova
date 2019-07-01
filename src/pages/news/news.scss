@@ -1,0 +1,152 @@
+page-news {
+
+    .page-news{
+        .spinner-news-category{
+            margin-left: auto;
+            margin-right: auto;
+        }
+        ion-slides{
+            ion-slide{
+                height: auto;
+                min-height: 200px;
+                img{
+                    max-height: none;
+                    min-height: 200px;
+                }
+                h4{
+                    display: none;
+                }
+            }
+        }
+        .segments-inner{
+            .segments-posts{
+                .list{
+                    .item{
+                        background-color: $white;
+                        border-bottom: 1px solid #dedede;
+                        align-items: flex-start;
+                        ion-thumbnail{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                           padding-top: 15px;
+                           img{
+                               height: auto;
+                           }
+                        }
+                        .item-inner{
+                            border-bottom: none;
+                        }
+                        &:last-child{
+                            border-bottom: none;
+                        }
+                        ion-thumbnail{
+                            margin-top: 0;
+                            margin-bottom: 0;
+                            display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                            
+                        }
+                        h2{
+							font-size: 16px;
+							font-weight: bold;
+							color:color($colors, dark);
+							white-space:normal;
+							small{
+								display:flex;
+								align-items:center;
+								font-size:14px;
+								color: #747474;
+								font-weight:normal;
+								margin-top:5px;
+								.icon{
+									font-size: 16px;
+									margin-right: 5px;
+								}
+							}
+                        }
+                        .post-excerpt{
+                            font-size:14px;
+                            margin-bottom:0;
+                            margin-top:5px;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            height:80px;
+                            white-space: normal;
+                            p:first-child{
+                                white-space: normal;
+                                line-height: 1.4;
+                                -webkit-line-clamp: 4;
+                                display: -webkit-box;
+                                box-sizing: border-box;
+                                -webkit-box-orient: vertical;
+                            }
+                            p{
+                                display: none;
+                            }
+                            strong{
+                                font-weight: normal;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .segments-categories{
+                margin-top: 10px;
+                .grid-categories{
+                    padding: 0;
+
+                    .col:nth-child(2n + 1){
+                        padding-left: 0.5px;
+                    }
+                    .col{
+                        padding-top: 0;
+                        padding-left:0;
+                        padding-right:0;
+                        padding-bottom: 1px;
+                    }
+                    
+                    .card-background-page {
+						background-color:$white;
+                        width: calc(100% - 1px);
+						    min-height: 225px;
+                       
+						margin: 0;
+						padding:15px;
+                        border-radius: 0;
+						box-shadow:none;
+						text-align: center;
+						
+						
+						.card-content{
+							margin-top:10px;
+							.card-title {
+                            
+								font-size: 1.0em;
+					font-weight: bold;
+					color:#000;
+							}
+						
+                        	.card-subtitle {
+								font-size:14px;
+								color: #747474;
+							}
+						}
+                        
+                        
+                    
+                    }
+                    ion-thumbnail{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                      	 position: relative;
+                    }
+                }
+            }
+        }
+    }
+}

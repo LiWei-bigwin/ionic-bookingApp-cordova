@@ -1,0 +1,67 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    },
+    "cordova-plugin-dns": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    },
+    "cordova-plugin-email-composer": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    },
+    "cordova-plugin-native-spinner": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    },
+    "cordova-plugin-nativegeocoder": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    },
+    "cordova-plugin-themeablebrowser": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    },
+    "onesignal-cordova-plugin": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    }
+  },
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.booksofprayer.app"
+    }
+  }
+}

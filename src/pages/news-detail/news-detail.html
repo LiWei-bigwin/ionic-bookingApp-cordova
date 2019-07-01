@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{'News Details'| translate }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="page-news-detail">
+  <ion-card>
+    <ion-spinner *ngIf="!post.image"></ion-spinner>
+    <img src="{{post.image}}" *ngIf="post.image" class="animated fadeIn">
+    <ion-card-content>
+      <ion-card-title>
+        <h2>{{post.title.rendered}}
+        <br>
+        <small>
+         <ion-icon name="clock"></ion-icon>{{post.date}}</small></h2>
+      </ion-card-title>
+      <div class="post-description" [innerHTML]="post.content.rendered"></div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

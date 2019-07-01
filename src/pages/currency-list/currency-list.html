@@ -1,0 +1,23 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-buttons left>
+        <button ion-button icon-only (click)="dismiss()">
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>{{"Select Currency"|translate}}</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content>
+    <ion-list radio-group [(ngModel)]="currency">
+      <ion-item *ngFor="let v of currencyList">
+        <img src="{{v.flag}}" item-start>
+        <ion-label>{{v.name}}</ion-label>
+        <ion-radio [value]="v" (ionSelect)="updateCurrency()"></ion-radio>
+      </ion-item>
+    </ion-list>
+  </ion-content>

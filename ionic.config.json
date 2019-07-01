@@ -1,0 +1,7 @@
+{
+  "name": "book of prayers",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

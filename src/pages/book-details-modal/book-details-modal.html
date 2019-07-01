@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>ModuleBook</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModalBook()" round> Close </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-tabs color="wbprimary">
+    <ion-tab [root]="tab1root" tabTitle="Table of Contents " tabIcon="md-list" [rootParams]="toc"></ion-tab>
+    <ion-tab [root]="tab2root" tabTitle="Bookmarks" tabIcon="ios-bookmarks-outline" [rootParams]="bookmarks"></ion-tab>
+    <ion-tab [root]="tab3root" tabTitle="Highlights" tabIcon="ios-create-outline" [rootParams]="highlights"></ion-tab>
+  </ion-tabs>
+</ion-content>

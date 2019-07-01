@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list class="list-avatar">
+
+
+
+    <img class="bing-img" src="{{banner}}" *ngIf="banner!=false">
+
+    <ion-item padding text-center>
+      <ion-avatar *ngIf="gravatar!=null">
+        <img src="{{gravatar}}">
+      </ion-avatar>
+      <h2>{{name}}</h2>
+      <p *ngIf="rating!=null">
+        <ion-icon name="star-outline"></ion-icon>&nbsp;&nbsp;{{rating.rating}}
+      </p>
+      <p>{{email}}</p>
+      <button ion-button color="light" (click)="contactUs()">
+        {{'Contact Us' | translate }}
+      </button>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid>
+    <ion-col *ngFor="let p of products" col-6>
+      <product [data]="p" [type]="'normal'"></product>
+    </ion-col>
+  </ion-grid>
+  <ion-infinite-scroll #infinite (ionInfinite)="getProducts()">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <!-- <ion-fab right bottom>
+    <button ion-fab color="secondary">
+      <ion-icon name="arrow-dropup"></ion-icon>
+    </button>
+    <ion-fab-list side="top">
+      <button ion-fab *ngIf="store.fb">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </button>
+      <button ion-fab *ngIf="store.twitter">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </button>
+      <button ion-fab *ngIf="store.pinterest">
+        <ion-icon name="logo-pinterest"></ion-icon>
+      </button>
+      <button ion-fab *ngIf="store.youtube">
+        <ion-icon name="logo-youtube"></ion-icon>
+      </button>
+      <button ion-fab *ngIf="store.gplus">
+        <ion-icon name="logo-googleplus"></ion-icon>
+      </button>
+      <button ion-fab *ngIf="store.linkedin">
+        <ion-icon name="logo-linkedin"></ion-icon>
+      </button>
+      <button ion-fab *ngIf="store.instagram">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </button>
+      <button ion-fab *ngIf="store.flickr">{{'Flickr'|translate}}
+      </button>
+    </ion-fab-list>
+  </ion-fab> -->
+
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-toolbar color="light">
+  <ion-segment [(ngModel)]="segments" *ngIf="config.defaultIcons">
+    <ion-segment-button value="HomePage" (click)="openPage('HomePage')">
+      <ion-icon name="custom-home"></ion-icon>
+      <div class="footer-title">{{ 'Home' | translate }}</div>
+    </ion-segment-button>
+    <ion-segment-button value="WishListPage" (click)="openPage('WishListPage')">
+      <ion-icon name="custom-heart"></ion-icon>
+      <div class="footer-title">{{ 'Wishlist' | translate }}</div>
+    </ion-segment-button><!-- {{ 'Categories' | translate }} -->
+    <ion-segment-button value="ProductsPage" (click)="openPage('ProductsPage')">
+      <ion-icon name="custom-shopping-cart"></ion-icon>
+      <div class="footer-title">{{ 'Shop' | translate }}</div>
+    </ion-segment-button><!-- {{ 'Shop' | translate }} -->
+    <ion-segment-button value="NewsPage" (click)="openPage('NewsPage')">
+      <ion-icon name="custom-star"></ion-icon>
+      <div class="footer-title">{{ 'News' | translate }}</div>
+    </ion-segment-button><!-- {{ 'News' | translate }} -->
+  </ion-segment>
+
+  <ion-segment [(ngModel)]="segments" *ngIf="!config.defaultIcons">
+    <ion-segment-button value="HomePage" (click)="openPage('HomePage')">
+      <ion-icon name="custom-home"></ion-icon>
+      <div class="footer-title">{{ 'Home' | translate }}</div>
+    </ion-segment-button>
+    <ion-segment-button value="WishListPage" (click)="openPage('WishListPage')">
+      <ion-icon name="custom-heart"></ion-icon>
+      <div class="footer-title">{{ 'Wishlist' | translate }}</div>
+    </ion-segment-button><!-- {{ 'Categories' | translate }} -->
+    <ion-segment-button value="ProductsPage" (click)="openPage('ProductsPage')">
+      <ion-icon name="custom-shopping-cart"></ion-icon>
+      <div class="footer-title">{{ 'Shop' | translate }}</div>
+    </ion-segment-button><!-- {{ 'Shop' | translate }} -->
+    <ion-segment-button value="NewsPage" (click)="openPage('NewsPage')">
+      <ion-icon name="custom-star"></ion-icon>
+      <div class="footer-title">{{ 'News' | translate }}</div>
+    </ion-segment-button><!-- {{ 'News' | translate }} -->
+  </ion-segment>
+</ion-toolbar>

@@ -1,0 +1,22 @@
+<ion-header>
+</ion-header>
+<ion-content>
+  <ion-card *ngFor="let bookmark of bookmarks">
+    <ion-card-content  (click)="select(bookmark)">
+      <ion-card-title>
+        Position: {{bookmark.position*100 | number:'1.0-2'}}%
+      </ion-card-title>
+      <p >
+        {{bookmark.excerpt.substring(0,200)}}...
+      </p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-start (click)="delete(bookmark)">
+          <ion-icon name='ios-trash-outline'></ion-icon>
+          Delete
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>

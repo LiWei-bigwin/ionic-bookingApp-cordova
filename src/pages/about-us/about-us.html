@@ -1,0 +1,31 @@
+
+<ion-header>
+    <ion-navbar>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+  
+      <ion-title>
+        {{'About Us'| translate }}
+      </ion-title>
+  
+      <ion-buttons end>
+        <button ion-button icon-only (click)="openSearch()">
+          <ion-icon name="search"></ion-icon>
+        </button>
+        <button ion-button icon-only class="cart-button" (click)="openCart()">
+          <ion-icon name="cart">
+            <ion-badge color="secondary">{{shared.cartquantity}}</ion-badge>
+          </ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content class="page-about-us" padding>
+  <div>Books of Prayer is a series of books dedicated to teaching people in various stages of life how to pray. These books will teach you why, how, who and when to pray.</div>
+ 
+</ion-content>
+<!-- <ion-footer *ngIf="config.footerShowHide==1">
+  <footer ></footer>
+</ion-footer> -->

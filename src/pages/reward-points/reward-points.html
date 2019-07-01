@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'Reward Points'| translate }}
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="refreshPage()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <button ion-button icon-only class="cart-button">
+        <ion-icon name="cart">
+          <ion-badge color="secondary">{{shared.cartquantity}}</ion-badge>
+        </ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-grid class="page-empty" *ngIf="rewards.length==0 && !httpLoading">
+    <ion-row align-items-center>
+      <ion-col col-12>
+        <h3 text-center>
+          <ion-icon name="happy"></ion-icon>
+        </h3>
+        <h4 text-center>{{'Your Rewards List is Empty'|translate}}</h4>
+        <h5 text-center>{{'continue shopping'|translate}}</h5>
+        <p text-center>
+          <button ion-button (click)="openShop()">{{'Explore'|translate}}</button>
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-card *ngFor="let r of rewards">
+    <ion-card-content>
+      <ion-row>
+        <ion-col col-6>
+          {{'Action'|translate}}
+        </ion-col>
+        <ion-col text-right col-6>
+          {{r.type}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          {{'Points'|translate}}
+        </ion-col>
+        <ion-col text-right col-6>
+          {{r.points}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          {{'Date'|translate}}
+        </ion-col>
+        <ion-col text-right col-6>
+          {{r.date|date}}
+        </ion-col>
+      </ion-row>
+
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col col-8>
+      <h5> {{'Total Points Earned'|translate}} &nbsp;&nbsp;:</h5>
+    </ion-col>
+    <ion-col text-right col-4>
+      <h5>{{totalPoints()}}</h5>
+    </ion-col>
+  </ion-row>
+</ion-footer>

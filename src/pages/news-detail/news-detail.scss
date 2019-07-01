@@ -1,0 +1,51 @@
+page-news-detail {
+    .page-news-detail{
+        .card{
+            background-color: $white;
+            width: calc(100% - 0px);
+            margin: 0;
+            border-radius: 0;
+            .card-content{
+                padding: 10px;
+				.card-title{
+					margin-top:0;
+				}
+                h2{
+					font-size: 20px;
+					font-weight: bold;
+					color:color($colors, dark);
+					white-space:normal;
+					small{
+						display:flex;
+						align-items:center;
+						font-size: 16px;
+						color: #747474;
+						font-weight:normal;
+						margin-top:5px;
+						.icon{
+							font-size: 18px;
+							margin-right: 5px;
+						}
+					}
+				}
+                .post-description{
+                    p{
+                        white-space: normal;
+                        strong{
+                            font-weight: normal;
+                        }
+                    }
+                    img{
+                        margin-top: 10px;
+                        margin-bottom: 8px;
+                        width: 100%;
+                        height: auto;
+                        strong{
+                            font-weight: normal;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
